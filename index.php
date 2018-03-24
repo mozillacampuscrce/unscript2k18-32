@@ -2,6 +2,7 @@
    include('config.php');
    session_start();
    $flag=0;
+   $td = date('Y-m-d');
    if($_SERVER['REQUEST_METHOD'] == "POST"){
     $flag=1;
     $yr = mysqli_real_escape_string($db,$_POST['year']);
@@ -25,7 +26,7 @@
             $table="<div class=\"table-responsive\"><table class=\"table table-hover table-bordered\"><thead><tr><th>Roll No</th>";
             for($i=0;$i<mysqli_num_rows($result);$i++){
                 $d = $restable[$i]['Date'];
-                $d = date_format(date_create($d),"d-m");
+                $d = date_format(date_create($d),"d-m-Y");
                 $table = $table."<th>$d</th>";
               }
             $table=$table."</tr></thead><tbody>";
@@ -89,7 +90,7 @@
       <select class="form-control" name="year" onchange="loadsub('')" id="yr">
       <?php if(!$flag) echo "<option disabled selected>-- Select a Year --</option>"; ?>
       <?php 
-        echo "<option ";if($flag && $yr=="SE") echo "selected";
+        echo "<option>FE</option><option ";if($flag && $yr=="SE") echo "selected";
         echo ">SE</option><option ";if($flag && $yr=="TE") echo "selected";
         echo ">TE</option><option ";if($flag && $yr=="BE") echo "selected";
         echo ">BE</option> ";
@@ -124,14 +125,14 @@
     <label class="control-label col-sm-2">From:</label>
     <div class="col-sm-5">
       <input type="date" class="form-control" name="fromd"" placeholder="Enter from date"
-      <?php if($flag) echo "value=\"$fromd\""; ?> >
+      <?php if($flag) echo "value=\"$fromd\""; else echo "value=\"$td\""; ?> >
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2">To:</label>
     <div class="col-sm-5">
       <input type="date" class="form-control" name="tod"" placeholder="Enter to date"
-      <?php if($flag) echo "value=\"$tod\""; ?> >
+      <?php if($flag) echo "value=\"$tod\""; else echo "value=\"$td\""; ?> >
     </div>
   </div>
   <div class="form-group"> 
