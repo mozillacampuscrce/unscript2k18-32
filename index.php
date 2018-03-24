@@ -12,6 +12,7 @@
     $tod = mysqli_real_escape_string($db,$_POST['tod']);
     $subs= $_SESSION['subs'];
     $subs = str_replace('>'.$sub, ' selected>'.$sub, $subs);
+    //get strength from table
     $sql = "SELECT `Strength` FROM `Strength` WHERE  `Year` = '$yr' and `Division` = '$dv';";
       if($result=mysqli_query($db,$sql)){
         $row=mysqli_fetch_assoc($result);
