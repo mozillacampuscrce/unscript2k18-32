@@ -7,4 +7,6 @@
 }
 body{
 	background: url('bg.jpg') !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
 }
