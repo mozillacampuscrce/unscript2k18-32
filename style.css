@@ -1,0 +1,10 @@
+.float{
+	float:right;
+	margin-top:20px;
+}
+.btn {
+    margin: 5px;
+}
+body{
+	background: url('bg.jpg') !important;
+}
